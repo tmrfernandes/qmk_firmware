@@ -20,7 +20,7 @@
 #define EE_HANDS
 
 #define AUTO_SHIFT_TIMEOUT 250
-#define TAPPING_TERM 175
+#define TAPPING_TERM 185
 
 #define OLED_FONT_H "keyboards/crkbd/lib/glcdfont.c"
 #define SPLIT_LAYER_STATE_ENABLE

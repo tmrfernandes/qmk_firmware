@@ -104,29 +104,29 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 *									'-------------'	'---------------'
 */
 	[_COLEMAK_DH]=LAYOUT_split_3x6_3(
-	KC_NO,KC_Q,KC_W,KC_F,KC_P,KC_B,																								KC_J,				KC_L,	KC_U,		KC_Y,		TD(O_A),		KC_BSPC,	
-	KC_NO,KC_A,KC_R,KC_S,KC_T,KC_G,																								KC_M,				KC_N,	KC_E,		KC_I,		KC_O,				KC_NO,
-	KC_NO,KC_Z,KC_X,KC_C,KC_D,KC_V,																								KC_K,				KC_H,	KC_COMM,KC_DOT,	TD(MIN_UND),KC_NO,
-											KC_NO,TD(CT_LBRK),TD(TD_SPACE_1),        TD(TD_SPACE_1),	TD(CT_RBRK),KC_ENT
+	KC_ESC, KC_Q,KC_W,KC_F, KC_P,       KC_B,																								KC_J,				KC_L,	KC_U,		KC_Y,		PT_MORD,	PT_ACUT,	
+	KC_TAB, KC_A,KC_R,KC_S, KC_T,       KC_G,																								KC_M,				KC_N,	KC_E,		KC_I,		KC_O,			PT_TILD,
+	KC_LSFT,KC_Z,KC_X,KC_C, KC_D,       KC_V,																								KC_K,				KC_H,	PT_COMM,PT_DOT,	PT_MINS,  KC_HYPR,
+											    KC_LEFT_GUI,TD(CT_LBRK),TD(TD_SPACE_2),        TD(TD_SPACE_1),	TD(CT_RBRK),KC_ENT
 	),
 
 /*
 *NumNav:Numeration,navigation
 *
 *,------------------------.							,-----------------------.
-*|		|	%	|	9	|	8	|	7	|	+	|							|		|		|	↑	|		|		|BCK|
+*|		|	%	|	1	|	2	|	3	|	+	|							|		|		|	↑	|		|		|   |
 *|----+---+---+---+---+---|							|---+---+---+---+---+---|
-*|		|	=	|	6	|	5	|	4	|	-	|							|		|	←	|	↓	|	→	|		|		|
+*|		|	=	|	4	|	5	|	6	|	-	|							|		|	←	|	↓	|	→	|		|		|
 *|----+---+---+---+---+---|             |---+---+---+---+---+---|
-*|		|		|	3	|	2	|	1	|	*	|             |		|		|		|		|		|		|
+*|		|		|	7	|	8	|	9	|	*	|             |		|		|		|		|		|		|
 *'----------------+---+---+-----. .-----|---+---+---------------'
 *									|	0	|	/	|_SYM	|	|_CK	|   |ENT|
 *									'-------------'	'-------------'
 */
 	[_NUMNAV]=LAYOUT_split_3x6_3(
-	KC_NO,KC_PERC,KC_9,  KC_8,KC_7,  KC_PLUS,                            			KC_NO,  KC_NO,			    	TD(TD_UP_PGUP),		KC_NO,						KC_NO,KC_BSPC,
-	KC_NO,KC_EQL,	KC_6,  KC_5,KC_4,  KC_MINS,                            			KC_NO,  TD(TD_LEFT_HOME),	TD(TD_DOWN_PGDN),	TD(TD_RIGHT_END),	KC_NO,KC_NO,
-	KC_NO,KC_NO,  KC_3,  KC_2,KC_1,  KC_PAST,                            			KC_NO,  KC_NO,			    	KC_NO,            KC_NO,		        KC_NO,KC_NO,
+	KC_NO,KC_PERC,KC_1,  KC_2,KC_3,  KC_PLUS,                            			KC_NO,  KC_NO,			    	TD(TD_UP_PGUP),		KC_NO,						KC_NO,KC_NO,
+	KC_NO,KC_EQL,	KC_4,  KC_5,KC_6,  KC_MINS,                            			KC_NO,  TD(TD_LEFT_HOME),	TD(TD_DOWN_PGDN),	TD(TD_RIGHT_END),	KC_NO,KC_NO,
+	KC_NO,KC_NO,  KC_7,  KC_8,KC_9,  KC_PAST,                            			KC_NO,  KC_NO,			    	KC_NO,            KC_NO,		        KC_NO,KC_NO,
 														KC_0,  KC_PSLS,TD(TD_SPACE_2),  TO(_COLEMAK_DH),KC_NO,  KC_ENT
 	),
 
@@ -138,7 +138,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // *,-----------------------.						,-----------------------.
 // *|		|	!	|	"	|	#	|	$	|	@	|						|	&	|	\	|	|	|	'	|	?	|		|
 // *|---+---+---+---+---+---|						|---+---+---+---+---+---|
-// *|		|		|		|		|		|		|						|		|		|		|		|		|		|
+// *|		|		|	€	|		|		|		|						|		|		|		|		|		|		|
 // *|---+---+---+---+---+---|						|---+---+---+---+---+---|
 // *|		|	<	|	>	|	ç	|		|		|						|		|		|		|		|		|		|
 // *'---------------+---+---+----.	.---+---+---+---------------'
@@ -146,8 +146,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // *								'------------'	'-----------'
 // */
  	[_SYM]=LAYOUT_split_3x6_3(
- 	KC_NO,KC_EXLM,KC_DQUO,KC_HASH,  KC_DLR,	KC_AT,																		KC_AMPR,KC_BSLS,KC_PIPE,KC_QUOT,KC_QUES,KC_NO,
- 	KC_NO,KC_NO,	KC_NO,	KC_NO,	  KC_NO,	KC_NO,																		KC_NO,	KC_NO,	KC_NO,	KC_NO,	KC_NO,	KC_NO,
+ 	KC_NO,KC_EXLM,PT_DQUO,KC_HASH,  KC_DLR,	PT_AT,																		PT_AMPR,KC_BSLS,KC_PIPE,PT_QUOT,PT_QUES,KC_NO,
+ 	KC_NO,PT_EURO,KC_NO,	KC_NO,	  KC_NO,	KC_NO,																		KC_NO,	KC_NO,	KC_NO,	KC_NO,	KC_NO,	KC_NO,
  	KC_NO,KC_LT,	KC_GT,	PT_CCED,	KC_NO,	KC_NO,        														KC_NO,	KC_NO,	KC_NO,	KC_NO,	KC_NO,	KC_NO,
  																  KC_NO,	KC_NO,TO(_COLEMAK_DH),		TO(_COLEMAK_DH),KC_NO,	KC_NO
  	),
