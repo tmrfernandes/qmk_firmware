@@ -6,27 +6,25 @@
 
 // clang-format off
 enum layers {
-  _COLEMAK_DH = 0,
-  _NUMNAV,
+	_COLEMAK_DH = 0,
+	_NUMNAV,
   _SYM
 };
 
 enum {
-  TD_LEFT_HOME,
-  TD_RIGHT_END,
-  TD_UP_PGUP,
-  TD_DOWN_PGDN,
-    TD_SPACE_1,
-    TD_SPACE_2,
-    TD_BSPACE_1,
-    TD_BSPACE_2,
-    CT_LBRK,
-    CT_RBRK,
-    O_A,
-    MIN_UND
+	TD_LEFT_HOME,
+	TD_RIGHT_END,
+	TD_UP_PGUP,
+	TD_DOWN_PGDN,
+	TD_SPACE_1,
+	TD_SPACE_2,
+	TD_BSPACE_1,
+	TD_BSPACE_2,
+	CT_LBRK,
+	CT_RBRK
 };
 
-int current_wpm = 0;
+int   current_wpm = 0;
 led_t led_usb_state;
 uint32_t anim_timer = 0;
 uint32_t anim_sleep = 0;
@@ -75,33 +73,31 @@ void right_brackets_reset(tap_dance_state_t *state, void *user_data) {
 }
 // clang-format off
 tap_dance_action_t tap_dance_actions[] = {
-    [TD_LEFT_HOME] = ACTION_TAP_DANCE_DOUBLE(KC_LEFT, KC_HOME), 
-    [TD_RIGHT_END] = ACTION_TAP_DANCE_DOUBLE(KC_RGHT, KC_END), 
-    [TD_UP_PGUP] = ACTION_TAP_DANCE_DOUBLE(KC_UP, KC_PGUP), 
-    [TD_DOWN_PGDN] = ACTION_TAP_DANCE_DOUBLE(KC_DOWN, KC_PGDN), 
-    
-    [TD_SPACE_1] = ACTION_TAP_DANCE_LAYER_TOGGLE(KC_SPC, _NUMNAV), 
-    [TD_SPACE_2] = ACTION_TAP_DANCE_LAYER_TOGGLE(KC_SPC, _SYM), 
+	[TD_LEFT_HOME] = ACTION_TAP_DANCE_DOUBLE(KC_LEFT, KC_HOME), 
+	[TD_RIGHT_END] = ACTION_TAP_DANCE_DOUBLE(KC_RGHT, KC_END), 
+	[TD_UP_PGUP] = ACTION_TAP_DANCE_DOUBLE(KC_UP, KC_PGUP), 
+	[TD_DOWN_PGDN] = ACTION_TAP_DANCE_DOUBLE(KC_DOWN, KC_PGDN), 
+	
+	[TD_SPACE_1] = ACTION_TAP_DANCE_LAYER_TOGGLE(KC_SPC, _NUMNAV), 
+	[TD_SPACE_2] = ACTION_TAP_DANCE_LAYER_TOGGLE(KC_SPC, _SYM), 
 
-    [CT_LBRK] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, left_brackets_finished, left_brackets_reset), 
-    [CT_RBRK] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, right_brackets_finished, right_brackets_reset), 
-    [O_A] = ACTION_TAP_DANCE_DOUBLE(PT_MORD, PT_FORD), 
-    [MIN_UND] = ACTION_TAP_DANCE_DOUBLE(PT_UNDS, PT_MINS),
+	[CT_LBRK] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, left_brackets_finished, left_brackets_reset), 
+	[CT_RBRK] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, right_brackets_finished, right_brackets_reset), 
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-    
+
 /*
 *BaseLayer:ColemakDH
-*,-----------------------.               .-----------------------.
-*|ESC| Q | W | F | P | B |               | J | L | U | Y | ºª|BCK|
-*|---+---+---+---+---+---|               |---+---+---+---+---+---|
-*|TAB| A | R | S | T | G |               | M | N | E | I | O | ´`|
-*|---+---+---+---+---+---|               |---+---+---+---+---+---|
-*|SHF| Z | X | C | D | V |               | K | H |,; |.: | -_| ^~|
-*'---------------+---+---+-----. .-------+---+---+---------------'
-*                |cmd|([{| SPC | |       |}])|ENT|
-*                '-------------' '---------------'
+*,------------------------.								.-----------------------.
+*|ESC|	Q	|	W	|	F	|	P	|	B	|								|	J	|	L	|	U	|	Y	|	ºª|	´`|
+*|---+----+---+---+---+---|								|---+---+---+---+---+---|
+*|TAB|	A	|	R	|	S	|	T	|	G	|								|	M	|	N	|	E	|	I	|	O	| ^~|
+*|---+----+---+---+---+---|         			|---+---+---+---+---+---|
+*|SHF|	Z	|	X	|	C	|	D	|	V	|         			|	K	|	H	|,;	|.:	|	-_|HYP|
+*'----------------+---+---+-----.	.-------+---+---+---------------'
+*									|cmd|([{| SPC	|	|       |}])|ENT|
+*									'-------------'	'---------------'
 */
 	[_COLEMAK_DH]=LAYOUT_split_3x6_3(
 	KC_ESC, KC_Q,KC_W,KC_F, KC_P,       KC_B,																								KC_J,				KC_L,	KC_U,		KC_Y,		PT_MORD,	PT_ACUT,	
@@ -133,7 +129,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 
 // /*
-// *SymLayer:Symbolsß
+// *SymLayer:Symbols
 // *
 // *,-----------------------.						,-----------------------.
 // *|		|	!	|	"	|	#	|	$	|	@	|						|	&	|	\	|	|	|	'	|	?	|		|
@@ -155,44 +151,44 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /*
 *FunctionLayer:Functionkeys
 *
-*,--------------------------------------.     ,---------------------------------------.
-*| F9 | F10 | F11 | F12 |  |     |  |  |  |  |  |
-*|------+---+---+---+-------|     |---+---+---+---+-------|
-*| F5 | F6 | F7 | F8 |  |     |  |Shift |Ctrl |Alt |GUI |
+*,--------------------------------------.					,---------------------------------------.
+*|	F9	|	F10	|	F11	|	F12	|		|					|		|		|		|		|		|
+*|------+---+---+---+-------|					|---+---+---+---+-------|
+*|	F5	|	F6	|	F7	|	F8	|		|					|		|Shift	|Ctrl	|Alt	|GUI	|
 *|------+---+---+---+-------|                   |---+---+---+---+-------|
-*| F1 | F2 | F3 | F4 |  |                   |  |  |  |  |  |
-*'------------------+---+---+-------. .---+---+---+-----------------------'
-*      |  |  |  | |  |_CK |  |
-*      '-----------------------' '-----------------------'
+*|	F1	|	F2	|	F3	|	F4	|		|                   |		|		|		|		|		|
+*'------------------+---+---+-------.	.---+---+---+-----------------------'
+*						|		|		|		|	|		|_CK	|		|
+*						'-----------------------'	'-----------------------'
 */
-// [_FUNCTION]=LAYOUT_split_3x6_3(
-// KC_F9,KC_F10, KC_F11, KC_F12, KC_NO,         KC_NO,              KC_NO,     KC_NO, KC_NO, KC_NO,
-// KC_F5,KC_F6, KC_F7, KC_F8, KC_NO,      KC_NO,              KC_RSFT, KC_RCTL,KC_LALT,KC_RGUI,
-// KC_F1,KC_F2, KC_F3, KC_F4, KC_NO,                      KC_NO,              KC_NO,     KC_NO, KC_NO, KC_NO,
-//       KC_NO, KC_NO, KC_NO,  KC_NO,  TO(_COLEMAK_DH), KC_NO
-// ),
+//	[_FUNCTION]=LAYOUT_split_3x6_3(
+//	KC_F9,KC_F10,	KC_F11,	KC_F12,	KC_NO,					    KC_NO,              KC_NO,	    KC_NO,	KC_NO,	KC_NO,
+//	KC_F5,KC_F6,	KC_F7,	KC_F8,	KC_NO,						KC_NO,              KC_RSFT,	KC_RCTL,KC_LALT,KC_RGUI,
+//	KC_F1,KC_F2,	KC_F3,	KC_F4,	KC_NO,                      KC_NO,              KC_NO,	    KC_NO,	KC_NO,	KC_NO,
+//							KC_NO,	KC_NO,	KC_NO,		KC_NO,  TO(_COLEMAK_DH),	KC_NO
+//	),
 
 ///*
-// *Layertemplate
-// *
-// *
-// *,-------------------------.    ,-----------------------.
-// *|  |  |  |  |  |  |     |  |  |  |  |  |  |
-// *|----+---+---+---+---+---|     |---+---+---+---+---+---|
-// *|  |  |  |  |  |  |     |  |  |  |  |  |  |
-// *|----+---+---+---+---+---|        |---+---+---+---+---+---|
-// *|  |  |  |  |  |  |        |  |  |  |  |  |  |
-// *'----------------+---+---+---. .---+---+---+---------------'
-// *            |  |  |  | |  |  |  |
-// *            '-----------' '-----------'
-// */
-// */
-//  [_LAYERINDEX]=LAYOUT(
-//  _______,_______,_______,_______,_______,_______,          _______,_______,_______,_______,_______,_______,
-//  _______,_______,_______,_______,_______,_______,          _______,_______,_______,_______,_______,_______,
-//  _______,_______,_______,_______,_______,_______,                    _______,_______,_______,_______,_______,_______,
-//                  _______,_______,_______,    _______,_______,_______
-//  ),
+//	*Layertemplate
+//	*
+//	*
+//	*,-------------------------.				,-----------------------.
+//	*|		|		|		|		|		|		|					|		|		|		|		|		|		|
+//	*|----+---+---+---+---+---|					|---+---+---+---+---+---|
+//	*|		|		|		|		|		|		|					|		|		|		|		|		|		|
+//	*|----+---+---+---+---+---|       	|---+---+---+---+---+---|
+//	*|		|		|		|		|		|		|       	|		|		|		|		|		|		|
+//	*'----------------+---+---+---.	.---+---+---+---------------'
+//	*						      |		|		|		|	|		|		|		|
+//	*				    		  '-----------'	'-----------'
+//	*/
+//	*/
+//		[_LAYERINDEX]=LAYOUT(
+//		_______,_______,_______,_______,_______,_______,										_______,_______,_______,_______,_______,_______,
+//		_______,_______,_______,_______,_______,_______,										_______,_______,_______,_______,_______,_______,
+//		_______,_______,_______,_______,_______,_______,                    _______,_______,_______,_______,_______,_______,
+//																		_______,_______,_______,    _______,_______,_______
+//		),
 };
 // clang-format on
 

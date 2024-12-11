@@ -21,9 +21,7 @@ enum {
 	TD_BSPACE_1,
 	TD_BSPACE_2,
 	CT_LBRK,
-	CT_RBRK,
-	O_A,
-	MIN_UND
+	CT_RBRK
 };
 
 int   current_wpm = 0;
@@ -85,8 +83,6 @@ tap_dance_action_t tap_dance_actions[] = {
 
 	[CT_LBRK] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, left_brackets_finished, left_brackets_reset), 
 	[CT_RBRK] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, right_brackets_finished, right_brackets_reset), 
-	[O_A] = ACTION_TAP_DANCE_DOUBLE(PT_MORD, PT_FORD), 
-	[MIN_UND] = ACTION_TAP_DANCE_DOUBLE(PT_UNDS, PT_MINS),
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -94,11 +90,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /*
 *BaseLayer:ColemakDH
 *,------------------------.								.-----------------------.
-*|ESC|	Q	|	W	|	F	|	P	|	B	|								|	J	|	L	|	U	|	Y	|	ºª|BCK|
+*|ESC|	Q	|	W	|	F	|	P	|	B	|								|	J	|	L	|	U	|	Y	|	ºª|	´`|
 *|---+----+---+---+---+---|								|---+---+---+---+---+---|
-*|TAB|	A	|	R	|	S	|	T	|	G	|								|	M	|	N	|	E	|	I	|	O	|	´`|
+*|TAB|	A	|	R	|	S	|	T	|	G	|								|	M	|	N	|	E	|	I	|	O	| ^~|
 *|---+----+---+---+---+---|         			|---+---+---+---+---+---|
-*|SHF|	Z	|	X	|	C	|	D	|	V	|         			|	K	|	H	|,;	|.:	|	-_| ^~|
+*|SHF|	Z	|	X	|	C	|	D	|	V	|         			|	K	|	H	|,;	|.:	|	-_|HYP|
 *'----------------+---+---+-----.	.-------+---+---+---------------'
 *									|cmd|([{| SPC	|	|       |}])|ENT|
 *									'-------------'	'---------------'
